@@ -20,9 +20,8 @@ session_start();
       <div class="nav-wrapper deep-purple darken-3">
         <a href="index.html" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
         
-
         <ul class="right hide-on-med-and-down">
-          
+        
           <li><i class="material-icons">shopping_cart</i></li>
           
           <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE): ?>
@@ -48,23 +47,18 @@ session_start();
       </div>
     </nav>
   </header>
-
-  <section class="logoContainer">
-    <div class="logos">
-      <img src="img/mugler.png" alt="Mugler Logo" class="logo">
-      <img src="img/font.png" alt="Alien Logo" class="logo">
+  <main class="produktmain">
+    <div class="produktcontainer">
+            <img class="produkt" src="/img/alien.webp" alt="platzhalter">
+            </div>
+    <div class="produkttextcontainer">
+        <h2>Mugler</h2>
+        <h1>Alien Hypersense</h1>
+        <p>Damenparfüm</p>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
     </div>
-    
-    <div class="parfümContainer">
-      <img src="img/alien.webp" alt="Alien Perfume" class="parfüm">
-    </div>
-  </section>
-
-  <section class="content">
-    <h2>Weitere Produkte</h2>
-    <p>Hier könnten weitere Inhalte stehen...</p>
-  </section>
-
+  </main>
+  <footer></footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
