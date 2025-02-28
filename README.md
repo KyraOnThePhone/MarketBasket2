@@ -4,7 +4,7 @@ Lhbkkj
 Doku: https://1drv.ms/f/c/eef3a3deb2781862/Eg1i6FU-ViVEv6W7lsmZdZQBH_oI5g6QAcA17287nxHg-g?e=A6j1w7
 Website Design: https://1drv.ms/f/c/eef3a3deb2781862/EmF1X7nk4gRAtrQHjDyhvvEBmLoTYCBly5uj0mm5EIsZlQ?e=602iSr
 Excel: https://1drv.ms/x/s!AjWgedgKMrU-hvRn3hVy0DLLOJtRiQ?e=6s796q
-
+hallo
 Auftrag: 
 Market Basket Analyse Projekt Trimkowski
 Datenspeicherungs und analyse Technik
