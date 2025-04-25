@@ -29,7 +29,6 @@ session_start();
               <li><i class="material-icons">account_box</i></li>
               <li><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></li>
 
-              
               <?php if (in_array('admin', $_SESSION['permissions'])): ?>
                   <li><a href="visualizer.php">AdminTools</a></li>
               <?php endif; ?>
@@ -43,6 +42,8 @@ session_start();
           
           <?php else: ?>
               <li><a href="login.html">Login</a></li>
+              <li><a href="register.html">Registrieren</a></li>
+
           <?php endif; ?>
         </ul>
       </div>
