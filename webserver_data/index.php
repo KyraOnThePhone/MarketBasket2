@@ -102,7 +102,15 @@ session_start();
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">Über uns</h5>
-          <p class="grey-text text-lighten-4">Wir sind ein Online-Shop, der alles hat von A-Z außer Jeff Bezos.</p>
+            <p class="grey-text text-lighten-4 tooltipped" data-position="top" data-tooltip="Ja, wir sind das bessere Amazon!">
+            Wir sind ein Online-Shop, der alles hat von A-Z außer Jeff Bezos.
+            </p>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const elems = document.querySelectorAll('.tooltipped');
+              M.Tooltip.init(elems);
+            });
+            </script>
         </div>
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Links</h5>
