@@ -62,9 +62,83 @@ session_start();
   </section>
 
   <section class="content">
-    <h2>Weitere Produkte</h2>
-    <p>Hier könnten weitere Inhalte stehen...</p>
+    <div class="container"></div></div>
+      <h4 class="center-align">Unsere Bestseller</h4>
+      <div class="row">
+        <div class="carousel carousel-slider">
+          <?php for ($i = 1; $i <= 12; $i++): ?>
+            <div class="carousel-item">
+              <div class="card small"></div>
+              <div class="card-image">
+                <a href="product.php?id=<?= $i ?>"></a>
+                <img src="img/alien.webp" alt="Produkt <?= $i ?>" class="responsive-img">
+                </a>
+              </div>
+              <div class="card-content"></div>
+                <span class="card-title truncate">Produkt <?= $i ?></span>
+                <a href="add_to_cart.php?id=<?= $i ?>" class="btn-floating halfway-fab waves-effect waves-light deep-purple">
+                <i class="material-icons">add_shopping_cart</i>
+                </a>
+              </div>
+              </div>
+            </div>
+                  </a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title">Produkt <?= $i ?></span>
+                  <a href="add_to_cart.php?id=<?= $i ?>" class="btn-floating halfway-fab waves-effect waves-light deep-purple">
+                    <i class="material-icons">add_shopping_cart</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <?php endfor; ?>
+        </div>
+      </div>
+    </div>
   </section>
+  <footer class="page-footer deep-purple darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Über uns</h5>
+          <p class="grey-text text-lighten-4">Wir sind ein Online-Shop, der alles hat von A-Z außer Jeff Bezos.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Produkte</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Über uns</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Kontakt</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2025 Amazing Shop
+        <a class="grey-text text-lighten-4 right" href="#!">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const elems = document.querySelectorAll('.carousel');
+      M.Carousel.init(elems, {
+        fullWidth: true,
+        indicators: true
+      });
+      const carousels = document.querySelectorAll('.carousel-slider');
+      carousels.forEach(carousel => {
+        M.Carousel.init(carousel, {
+          fullWidth: true,
+          indicators: true
+        });
+      });
+    });
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
