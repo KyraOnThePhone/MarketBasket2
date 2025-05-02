@@ -6,19 +6,18 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazing Shop</title>
+  <title>Kontakt – Amazing Shop</title>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
+<header>
     <nav>
       <div class="nav-wrapper deep-purple darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
+        <a href="index.php" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
         
 
         <ul class="right hide-on-med-and-down">
@@ -50,37 +49,41 @@ session_start();
     </nav>
   </header>
 
-  <section class="logoContainer">
-    <div class="logos">
-      <img src="img/mugler.png" alt="Mugler Logo" class="logo">
-      <img src="img/font.png" alt="Alien Logo" class="logo">
-    </div>
-    
-    <div class="parfümContainer">
-      <img src="img/alien.webp" alt="Alien Perfume" class="parfüm">
-    </div>
-  </section>
-
-  <section class="content">
-  <div class="container">
-    <h4 class="center-align">Unsere Bestseller</h4>
-    <div class="product-grid">
-      <?php for ($i = 1; $i <= 12; $i++): ?>
-        <div class="product-card">
-          <a href="product.php?id=<?= $i ?>">
-            <img src="img/alien.webp" alt="Produkt <?= $i ?>" class="product-image">
-          </a>
-          <div class="product-info">
-            <span class="product-title">Produkt <?= $i ?></span>
-            <a href="add_to_cart.php?id=<?= $i ?>" class="btn-add-to-cart">
-              <i class="material-icons">add_shopping_cart</i>
-            </a>
-          </div>
+<main>
+  <h4 class="center-align" style="margin-top: 40px; margin-bottom: 20px;">Kontaktieren Sie uns</h4>
+  <div class="row">
+    <form class= "col s12 m12 l12 card-panel" action="kontakt_senden.php" method="POST">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="name" name="name" type="text" required>
+          <label for="name">Name</label>
         </div>
-      <?php endfor; ?>
-    </div>
+        <div class="input-field col s12 m6">
+          <input id="email" name="email" type="email" required>
+          <label for="email">E-Mail</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="betreff" name="betreff" type="text" required>
+          <label for="betreff">Betreff</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="nachricht" name="nachricht" class="materialize-textarea" required></textarea>
+          <label for="nachricht">Nachricht</label>
+        </div>
+      </div>
+
+      <div class="row center-align">
+        <button type="submit" class="btn deep-purple darken-3">Absenden</button>
+      </div>
+    </form>
   </div>
-</section>
+</main>
 
 <footer class="shop-footer">
   <div class="footer-content container">
@@ -114,24 +117,6 @@ session_start();
     });
   </script>
 </footer>
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const elems = document.querySelectorAll('.carousel');
-      M.Carousel.init(elems, {
-        fullWidth: true,
-        indicators: true
-      });
-      const carousels = document.querySelectorAll('.carousel-slider');
-      carousels.forEach(carousel => {
-        M.Carousel.init(carousel, {
-          fullWidth: true,
-          indicators: true
-        });
-      });
-    });
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

@@ -112,3 +112,150 @@ main {
   height: 100vh;
   background-color: #f0f0f0;
 }
+.content {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn-add-to-cart {
+  background-color: #4527A0;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #311b92;
+}
+
+.shop-footer {
+  background-color: #4527A0;
+  color: white;
+  padding-top: 40px;
+  margin-top: 50px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  padding-bottom: 30px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section h5 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-section p,
+.footer-section a {
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.footer-bottom {
+  background-color: #311b92;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-bottom a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #fff;
+}
+
+.parallax-container {
+  position: relative;
+  height: 400px;
+}
+
+.icon-features {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.icon-features .material-icons {
+  color: #4527A0;
+}
+
+form.card-panel {
+  max-width: none;
+  margin: 0 auto;
+}
