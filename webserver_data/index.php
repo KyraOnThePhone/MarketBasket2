@@ -15,7 +15,8 @@ session_start();
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+?>
 
   <section class="logoContainer">
     <div class="logos">
