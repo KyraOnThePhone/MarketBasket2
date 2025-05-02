@@ -15,29 +15,7 @@ session_start();
 </head>
 <body>
 
-<header>
-  <nav>
-    <div class="nav-wrapper deep-purple darken-3">
-      <a href="index.html" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
-      <ul class="right hide-on-med-and-down">
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE): ?>
-            <li><i class="material-icons">account_box</i></li>
-            <li><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></li>
-            <?php if (in_array('admin', $_SESSION['permissions'])): ?>
-                <li><a href="visualizer.php">AdminTools</a></li>
-            <?php endif; ?>
-            <?php if (in_array('dev', $_SESSION['permissions'])): ?>
-                <li><a href="devtools.php">DevTools</a></li>
-            <?php endif; ?>
-            <li><a href="logout.php">Logout</a></li>
-        <?php else: ?>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Registrieren</a></li>
-        <?php endif; ?>
-      </ul>
-    </div>
-  </nav>
-</header>
+<?php include 'header.php'; ?>
 
 <main class="content">
   <div class="container">
@@ -70,38 +48,7 @@ session_start();
   </div>
 </main>
 
-<footer class="shop-footer">
-  <div class="footer-content container">
-    <div class="footer-section about">
-      <h5>Über uns</h5>
-      <p class="tooltipped" data-position="top" data-tooltip="Ja, wir sind das bessere Amazon!">
-        Wir sind ein Online-Shop, der alles hat von A-Z außer Jeff Bezos.
-      </p>
-    </div>
-    <div class="footer-section links">
-      <h5>Links</h5>
-      <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="#!">Produkte</a></li>
-        <li><a href="about.php">Über uns</a></li>
-        <li><a href="contact.php">Kontakt</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container">
-      <span>© 2025 Amazing Shop</span>
-      <a href="#!" class="right">Datenschutz</a>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.tooltipped');
-      M.Tooltip.init(elems);
-    });
-  </script>
-</footer>
+<?php include 'footer.php'; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>

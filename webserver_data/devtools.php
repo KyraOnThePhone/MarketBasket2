@@ -10,16 +10,12 @@
 
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-wrapper deep-purple darken-3">
-            <a href="index.php" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
-           
-            </div>
-        </nav>
-        </nav>
+ <?php include 'header.php'; ?>
     <main>
 
     </main>
 </body>
+<?php
+include 'footer.php';
+?>
 </html>

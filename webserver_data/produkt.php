@@ -14,39 +14,7 @@ session_start();
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <nav>
-      <div class="nav-wrapper deep-purple darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
-        
-        <ul class="right hide-on-med-and-down">
-        
-          <li><i class="material-icons">shopping_cart</i></li>
-          
-          <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE): ?>
-              <li><i class="material-icons">account_box</i></li>
-              <li><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></li>
-
-              
-              <?php if (in_array('admin', $_SESSION['permissions'])): ?>
-                  <li><a href="visualizer.php">AdminTools</a></li>
-              <?php endif; ?>
-
-              <?php if (in_array('dev', $_SESSION['permissions'])): ?>
-                  <li><a href="visualizer.php">AdminTools</a></li>
-                  <li><a href="devtools.php">DevTools</a></li>
-              <?php endif; ?>
-
-              <li><a href="logout.php">Logout</a></li>
-          
-          <?php else: ?>
-              <li><a href="login.html">Login</a></li>
-          <?php endif; ?>
-        </ul>
-      </div>
-    </nav>
-  </header>
+<?php include 'header.php'; ?>
   <main class="produktmain">
     <div class="produktcontainer">
             <img class="produkt" src="/img/alien.webp" alt="platzhalter">
@@ -59,7 +27,7 @@ session_start();
         <a class="btn elevated add2cart deep-purple darken-3"><i class="material-icons left">add</i>In den Warenkorb</a>
     </div>
   </main>
-  <footer></footer>
+ <?php include 'footer.php'; ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
