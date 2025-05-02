@@ -15,26 +15,13 @@ include 'admincheck.php'
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <header>
-    <nav>
-      <div class="nav-wrapper deep-purple darken-3">
-        <a href="#" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
-        <ul class="right hide-on-med-and-down">
-          <li><i class="material-icons">shopping_cart</i></li>
-          <li><i class="material-icons">account_box</i></li>
-          <li><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></li>
-          <li><a href="logout.php">Logout</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+<?php include 'header.php'; ?>
 <main>
         <canvas id="myChart"></canvas>
 </main>
-<footer>
-
-</footer>
+<?php
+include 'footer.php';
+?>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     var ctx = document.getElementById('myChart').getContext('2d');

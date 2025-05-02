@@ -34,7 +34,8 @@ session_start();
     <div class="product-grid">
       <?php for ($i = 1; $i <= 12; $i++): ?>
         <div class="product-card">
-          <a href="product.php?id=<?= $i ?>">
+          <!--<a href="product.php?id=<? //= $i ?>"> -->
+          <a href="produkt.php">
             <img src="img/alien.webp" alt="Produkt <?= $i ?>" class="product-image">
           </a>
           <div class="product-info">

@@ -12,7 +12,7 @@
 <body>
  <?php include 'header.php'; ?>
     <main>
-
+    <p>Hier werden irgendwann Daten generiert</p>
     </main>
 </body>
 <?php

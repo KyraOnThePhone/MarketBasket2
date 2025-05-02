@@ -19,7 +19,7 @@
   <div class="footer-bottom">
     <div class="container">
       <span>© 2025 Amazing Shop</span>
-      <a href="#!" class="right">Datenschutz</a>
+      <a href="datenschutz.php" class="right">Datenschutz</a>
     </div>
   </div>
 

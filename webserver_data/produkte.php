@@ -15,94 +15,58 @@ session_start();
 </head>
 <body>
 
-  <header>
-    <nav>
-      <div class="nav-wrapper deep-purple darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">store</i>Amazing Shop</a>
-        
+<?php include 'header.php'; ?>
 
-        <ul class="right hide-on-med-and-down">
-          
-          <li><i class="material-icons">shopping_cart</i></li>
-          
-          <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === TRUE): ?>
-              <li><i class="material-icons">account_box</i></li>
-              <li><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></li>
-
-              <?php if (in_array('admin', $_SESSION['permissions'])): ?>
-                  <li><a href="visualizer.php">AdminTools</a></li>
-              <?php endif; ?>
-
-              <?php if (in_array('dev', $_SESSION['permissions'])): ?>
-                  <li><a href="visualizer.php">AdminTools</a></li>
-                  <li><a href="devtools.php">DevTools</a></li>
-              <?php endif; ?>
-
-              <li><a href="logout.php">Logout</a></li>
-          
-          <?php else: ?>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="register.html">Registrieren</a></li>
-
-          <?php endif; ?>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <section class="content">
   <div class="container">
-    <h4 class="center-align">Unsere Bestseller</h4>
-    <div class="product-grid">
-      <?php for ($i = 1; $i <= 12; $i++): ?>
-        <div class="product-card">
-          <a href="product.php?id=<?= $i ?>">
-            <img src="img/alien.webp" alt="Produkt <?= $i ?>" class="product-image">
+  <div class="row" style="align-items: center; margin-bottom: 20px;">
+
+    <div class="col s12 m6">
+      <h4 class="left-align">Produkte</h4>
+    </div>
+
+    <div class="col s12 m6">
+      <div class="input-field">
+        <input id="produktsuche" type="text" class="validate">
+        <label for="produktsuche">Suche nach Produkt...</label>
+      </div>
+    </div>
+
+ 
+    <div class="col s12">
+      <div class="input-field">
+        <select id="filterOption">
+          <option value="bestseller" selected>Bestseller</option>
+          <option value="neueste">Neueste</option>
+          <option value="preis_auf">Preis: aufsteigend</option>
+          <option value="preis_ab">Preis: absteigend</option>
+          <option value="bewertung">Beste Bewertung</option>
+        </select>
+        <label>Sortieren nach</label>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="product-grid">
+    <?php for ($i = 1; $i <= 12; $i++): ?>
+      <div class="product-card" data-title="Produkt <?= $i ?>">
+      <!--  <a href="product.php?id=<?//= $i ?>"> -->
+        <a href="produkt.php">
+          <img src="img/alien.webp" alt="Produkt <?= $i ?>" class="product-image">
+        </a>
+        <div class="product-info">
+          <span class="product-title">Produkt <?= $i ?></span>
+          <a href="add_to_cart.php?id=<?= $i ?>" class="btn-add-to-cart">
+            <i class="material-icons">add_shopping_cart</i>
           </a>
-          <div class="product-info">
-            <span class="product-title">Produkt <?= $i ?></span>
-            <a href="add_to_cart.php?id=<?= $i ?>" class="btn-add-to-cart">
-              <i class="material-icons">add_shopping_cart</i>
-            </a>
-          </div>
         </div>
-      <?php endfor; ?>
-    </div>
+      </div>
+    <?php endfor; ?>
   </div>
-</section>
+</div>
 
-<footer class="shop-footer">
-  <div class="footer-content container">
-    <div class="footer-section about">
-      <h5>Über uns</h5>
-      <p class="tooltipped" data-position="top" data-tooltip="Ja, wir sind das bessere Amazon!">
-        Wir sind ein Online-Shop, der alles hat von A-Z außer Jeff Bezos.
-      </p>
-    </div>
-    <div class="footer-section links">
-      <h5>Links</h5>
-      <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="produkte.php">Produkte</a></li>
-        <li><a href="about.php">Über uns</a></li>
-        <li><a href="contact.php">Kontakt</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container">
-      <span>© 2025 Amazing Shop</span>
-      <a href="#!" class="right">Datenschutz</a>
-    </div>
-  </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.tooltipped');
-      M.Tooltip.init(elems);
-    });
-  </script>
-</footer>
+<?php include 'footer.php'; ?>
 
 
   <script>
