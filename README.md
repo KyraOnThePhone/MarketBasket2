@@ -32,3 +32,17 @@ Können wir feststellen dass unterschiedliche Zielgruppen unterschiedliches Kauf
 was sollen wir nutzen:
 Datenbank!!!!
 (etwas zur visualisierung)
+
+
+Abgabe:
+was soll gezeigt werden? (trimkowski)
+Datenbank, Struktur, Daten
+Definition des Projektes (was man sich dabei gedacht hat)
+Wie wurden die Daten generiert?
+Wie man die Daten analysiert hat
+Ergebnisse zeigen (z.B. visualisiert)
+30min pro Gruppe (inklusive Vorbereitungszeit, Fragerunde, Vortrag) -> ca. 15min Vortragszeit
+Kein fake Algorythmus, sondern etwas das funktioniert
+sollte ein schritt nicht völlig automatisiert funktionieren, kann man auch sagen was eigentlich automatisch passieren soll. "an dieser stelle sollte die datenverarbeitung automatisch weiter laufen, das haben wir nicht automatisiert hinbekommen, daher haben wir das manuell gemacht"
+Man kann sich auch andere Gruppen zur Hilfe nehmen z.B. Daten einer anderen Gruppe verwenden (mit Kennzeichnung wie ein Zitat) -> Transparenz
+Schriftliches Dokument (also quasi eine Doku) ist pflicht
