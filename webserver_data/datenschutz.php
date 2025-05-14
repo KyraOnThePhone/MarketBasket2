@@ -24,10 +24,10 @@ session_start();
     <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung. Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen.</p>
     <h4 class="deep-purple-text text-darken-3">2. Verantwortliche Stelle</h4>
     <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze ist:</p>
-    <p>Max Mustermann<br>
-    Musterstraße 1<br>
-    12345 Musterstadt<br>
-    E-Mail: mustermann@amazingshop.de</p>
+    <p>Captn Oglo<br>
+    Lessingstraße 69<br>
+    69911 Oglonien<br>
+    E-Mail: captn.oglo@amazingshop.de</p>
     <h4 class="deep-purple-text text-darken-3">3. Erhebung und Speicherung personenbezogener Daten</h4>
     <p>Wir erheben personenbezogene Daten, wenn Sie unsere Website besuchen, sich registrieren oder einen Kauf tätigen. Zu den personenbezogenen Daten gehören beispielsweise Ihr Name, Ihre E-Mail-Adresse, Ihre Anschrift und Ihre Zahlungsinformationen.</p>
     <h4 class="deep-purple-text text-darken-3">4. Verwendung Ihrer Daten</h4>
@@ -40,9 +40,9 @@ zum Zweck der Vertragsabwicklung, zur Bearbeitung Ihrer Anfragen und zur Zusendu
     <h4 class="deep-purple-text text-darken-3">7. Kontakt</h4>
     <p>Bei Fragen zu dieser Datenschutzerklärung oder zur Verarbeitung Ihrer personenbezogenen Daten können Sie sich jederzeit an uns wenden:</p>
     <div class="contact-info">
-      Max Mustermann<br>
-      Musterstraße 1<br>
-      12345 Musterstadt<br>
+      Captn Oglo<br>
+      Lessingstraße 69<br>
+      69911 Oglonien<br>
       <br>
       Telefon: 01234 567890<br>
       Fax: 01234 567891<br>

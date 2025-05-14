@@ -259,3 +259,34 @@ form.card-panel {
   max-width: none;
   margin: 0 auto;
 }
+.tab-content {
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.tabs .tab a {
+  color: white;
+}
+
+.tabs .tab a.active {
+  background-color: #6843A4;
+  border-bottom: 2px solid white;
+  color: white;
+  font-weight: bold;
+}
+
+.tabs .tab a:hover {
+  background-color: #5735A2;
+  color: white;
+  border-bottom: none;
+}
+
+.about-image {
+  width: auto;
+  height: 30vh;
+  
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 150px;
+}

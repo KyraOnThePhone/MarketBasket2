@@ -23,6 +23,7 @@ session_start();
     <p class="flow-text">
       Willkommen bei Amazing Shop – deinem Online-Shop für alles von A bis Z (außer Jeff Bezos).
     </p>
+    <img src="img/about.webp" alt="Amazing Shop Team" class="responsive-img center-align about-image">
     <div class="divider"></div>
       Seit unserer Gründung haben wir ein klares Ziel: den Onlinehandel zu revolutionieren – mit Persönlichkeit, Witz und einem durchdachten Sortiment.
         Wir sind nicht nur ein weiterer Online-Shop, sondern eine Community von Gleichgesinnten, die das Einkaufen zu einem Erlebnis machen wollen.
