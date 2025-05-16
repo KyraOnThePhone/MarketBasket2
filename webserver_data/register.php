@@ -9,7 +9,7 @@ $connectionInfo = array(
     "Database" => "Login",
     "UID" => "sa",
     "PWD" => "BratwurstIN23!",
-    "TrustServerCertificate" => true // Zertifikat ignorieren
+    "TrustServerCertificate" => true 
 );
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
