@@ -60,7 +60,7 @@ if (isset($_POST['username'], $_POST['password'], $_POST['repassword'])) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     $sql_insert = "INSERT INTO Accounts (username, password, role_id) VALUES (?, ?, ?)";
-    $params_insert = array($username, $hashed_password, 2); // Rolle Standard 2 für "User"
+    $params_insert = array($username, $hashed_password, 3); // Rolle Standard 2 für "User"
 
     $stmt_insert = sqlsrv_query($conn, $sql_insert, $params_insert);
 

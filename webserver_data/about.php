@@ -23,8 +23,18 @@ session_start();
     <p class="flow-text">
       Willkommen bei Amazing Shop – deinem Online-Shop für alles von A bis Z (außer Jeff Bezos).
     </p>
-    <img src="img/about.webp" alt="Amazing Shop Team" class="responsive-img center-align about-image">
+ <div class="slider-wrapper">
+  <div class="slider">
+    <img src="img/about.webp" class="slide active about-imgage" alt="Amazing Shop Team">
+    <img  src="img/about2.webp" class="slide about-imgage" alt="Amazing Shop Team 2">
+    <img src="img/about3.webp" class="slide about-imgage" alt="Amazing Shop Team 3">
+  </div>
+  <button class="slider-btn prev">&#10094;</button>
+  <button class="slider-btn next">&#10095;</button>
+</div>
+</div>
     <div class="divider"></div>
+    <p>
       Seit unserer Gründung haben wir ein klares Ziel: den Onlinehandel zu revolutionieren – mit Persönlichkeit, Witz und einem durchdachten Sortiment.
         Wir sind nicht nur ein weiterer Online-Shop, sondern eine Community von Gleichgesinnten, die das Einkaufen zu einem Erlebnis machen wollen.
 
@@ -45,12 +55,68 @@ session_start();
     Wir glauben daran, dass Online-Shopping mehr sein kann als nur ein schneller Klick. Genauso wie dieser Text hier. Er ist mehr als nur einen klick in ChatGPT, sondern auch ein Erlebnis meiner Schreibkünste.
       Danke, dass du Teil dieser Reise bist. Schau dich um, entdecke Neues – und wenn du Fragen hast, sind wir nur einen Klick entfernt. Ob du eine Antwort bekommst, ist eine andere Frage.
         Und wenn du uns nicht magst, dann schau dir einfach die Konkurrenz an. Aber wir sind sicher, dass du bleiben wirst. Schließlich sind wir das bessere Amazon.
-    </p>
+  </p>
   </div>
 </main>
 
 <?php include 'footer.php'; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".slide");
+    const nextBtn = document.querySelector(".slider-btn.next");
+    const prevBtn = document.querySelector(".slider-btn.prev");
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        slide.style.display = "none";
+        if (i === index) {
+          slide.classList.add("active");
+          slide.style.display = "block";
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      resetAutoPlay();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      resetAutoPlay();
+    });
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    }
+
+
+    showSlide(currentIndex);
+    startAutoPlay();
+  });
+</script>
+
+
 </body>
 </html>
