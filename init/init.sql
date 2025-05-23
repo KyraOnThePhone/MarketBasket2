@@ -234,3 +234,51 @@ BEGIN
     ');
 END
 GO
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'Transaktionen')
+BEGIN
+    EXEC('
+CREATE VIEW Transaktionen AS
+SELECT 
+    w.ID AS WarenkorbID,
+    b.ProduktID
+FROM Bestellungen b
+JOIN Warenkorb w ON b.WarenkorbID = w.ID;
+    ');
+END
+GO
+SELECT * FROM sys.objects WHERE name = 'Produkte';
+IF NOT EXISTS (SELECT * FROM Produkte WHERE Name = 'Nähset')   
+BEGIN
+    INSERT INTO Produkte (Name, Beschreibung, Bestand, Hersteller) 
+    VALUES
+    ('Nähset', 'Komplettes Set für Handarbeitsfans mit Garn, Nadeln und Anleitung. Nein keine Keksdose', 150, 'SewCraft'),
+    ('Mehl', 'Weizenmehl Type 405, ideal für Backen und Kochen', 500, 'Müller Mühle'),
+    ('Holy Energy', 'Zuckerfreier Performance-Drink für Gamer und Studenten', 300, 'Holy GmbH'),
+    ('Controller', 'Kabelloser Controller, kompatibel mit PS5, Xbox und PC', 200, 'GameTech'),
+    ('Tik Tok Mystery Box', 'Überraschungsbox mit viralen TikTok-Gadgets', 120, 'TrendBox Inc.'),
+    ('Pokemon Karten', 'Booster Pack mit 10 zufälligen Pokémon-Karten', 400, 'The Pokémon Company'),
+    ('Pennergranate', 'Fertig gemischter alkoholischer Drink für zwischendurch', 80, 'StraßenPower'),
+    ('Vodka', 'Klarer Wodka, 40% Vol., 0,7L Flasche', 250, 'Gorbatschow'),
+    ('Sangria', 'Spanischer Fruchtwein mit Zitrusnote, 1L', 150, 'Casa España'),
+    ('Mugler Alien', 'Intensives Eau de Parfum mit Jasmin-Note', 100, 'Thierry Mugler'),
+    ('I Phone 16 Pro Max', 'Apple Smartphone mit 1TB Speicher und A18 Chip', 50, 'Apple'),
+    ('Kaffeetasse', 'Keramiktasse mit lustigem Spruch', 300, 'MugLife'),
+    ('Gaming Maus', 'Ergonomische Gaming-Maus mit RGB-Beleuchtung', 150, 'GameTech'),
+    ('Kopfhörer', 'Noise-Cancelling Over-Ear Kopfhörer', 80, 'SoundMaster'),
+    ('Laptop Rucksack', 'Wasserabweisender Rucksack für Laptops bis 15 Zoll', 200, 'TechGear'),
+    ('Fitness Tracker', 'Smartwatch mit Herzfrequenzmessung und GPS', 120, 'FitTrack'),
+    ('Bluetooth Lautsprecher', 'Tragbarer Lautsprecher mit 20 Stunden Akkulaufzeit', 90, 'SoundWave');
+END
+GO
+SELECT * FROM sys.objects WHERE name = Gruppen';
+IF NOT EXISTS (SELECT * FROM Gruppen WHERE Name = 'Oma')   
+BEGIN
+    INSERT INTO Gruppen (Name) VALUES
+    ('Oma'),
+    ('Gamer'),
+    ('Kind'),
+    ('Alkoholiker'),
+    ('Rich Kid');
+END
+GO
