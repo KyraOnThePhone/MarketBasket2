@@ -169,3 +169,85 @@ BEGIN
 END
 GO
 
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'GruppenKaufverhalten')
+BEGIN
+    EXEC('
+    CREATE VIEW GruppenKaufverhalten AS
+    SELECT 
+        g.Name AS Gruppenname,
+        p.Name AS Produktname,
+        COUNT(*) AS AnzahlBestellungen
+    FROM Bestellungen b
+    JOIN Produkte p ON b.ProduktID = p.ID
+    JOIN Gruppen g ON b.K_GruppeID = g.ID
+    GROUP BY g.Name, p.Name;
+    ');
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'TopEmpfehlungenProGruppe')
+BEGIN
+    EXEC('
+    CREATE VIEW TopEmpfehlungenProGruppe AS
+    SELECT 
+        g.Name AS Gruppenname,
+        p.Name AS Produktname,
+        r.Confidence
+    FROM Group_Product_Rules r
+    JOIN Gruppen g ON r.GruppeID = g.ID
+    JOIN Produkte p ON r.ProduktID = p.ID
+    WHERE r.Confidence > 0.5
+    ORDER BY g.Name, r.Confidence DESC;
+    ');
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenWarenkoerbe')
+BEGIN
+    EXEC('
+    CREATE VIEW KundenWarenkoerbe AS
+    SELECT 
+        k.ID AS KundenID,
+        k.Name AS Kundenname,
+        w.ID AS WarenkorbID,
+        w.Timestamp,
+        p.Name AS Produktname,
+        b.ProduktAnzahl
+    FROM Kunden k
+    JOIN Warenkorb w ON k.ID = w.UserID
+    JOIN Bestellungen b ON w.ID = b.WarenkorbID
+    JOIN Produkte p ON b.ProduktID = p.ID;
+    ');
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenMitGruppennamen')
+BEGIN
+    EXEC('
+    CREATE VIEW KundenMitGruppennamen AS
+    SELECT 
+        k.ID AS KundenID,
+        k.Name AS Kundenname,
+        g.Name AS Gruppenname
+    FROM Kunden k
+    JOIN Gruppen g ON k.GruppeID = g.ID;
+    ');
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenEmpfehlungen')
+BEGIN
+    EXEC('
+    CREATE VIEW KundenEmpfehlungen AS
+    SELECT 
+        k.Name AS Kundenname,
+        g.Name AS Gruppenname,
+        p.Name AS Produktname
+    FROM Product_Recommendations pr
+    JOIN Kunden k ON pr.UserID = k.ID
+    JOIN Gruppen g ON pr.KundenGruppeID = g.ID
+    JOIN Produkte p ON pr.ProduktID = p.ID;
+    ');
+END
+GO
