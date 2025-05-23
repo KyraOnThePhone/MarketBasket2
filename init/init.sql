@@ -186,23 +186,6 @@ BEGIN
 END
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'TopEmpfehlungenProGruppe')
-BEGIN
-    EXEC('
-    CREATE VIEW TopEmpfehlungenProGruppe AS
-    SELECT 
-        g.Name AS Gruppenname,
-        p.Name AS Produktname,
-        r.Confidence
-    FROM Group_Product_Rules r
-    JOIN Gruppen g ON r.GruppeID = g.ID
-    JOIN Produkte p ON r.ProduktID = p.ID
-    WHERE r.Confidence > 0.5
-    ORDER BY g.Name, r.Confidence DESC;
-    ');
-END
-GO
-
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenWarenkoerbe')
 BEGIN
     EXEC('
