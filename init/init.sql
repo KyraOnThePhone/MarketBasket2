@@ -75,3 +75,97 @@ BEGIN
 END
 GO
 
+
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'Shop')
+BEGIN
+    CREATE DATABASE Shop;
+END
+GO
+
+USE Shop;
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Produkte' AND type = 'U')
+BEGIN
+    CREATE TABLE Produkte (
+        ID INT PRIMARY KEY IDENTITY,
+        Name NVARCHAR(255),
+        Hersteller NVARCHAR(255),
+        Bestand INT,
+        Beschreibung NVARCHAR(MAX)
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Gruppen' AND type = 'U')
+BEGIN
+    CREATE TABLE Gruppen (
+        ID INT PRIMARY KEY IDENTITY,
+        Name NVARCHAR(255)
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Kunden' AND type = 'U')
+BEGIN
+    CREATE TABLE Kunden (
+        ID INT PRIMARY KEY IDENTITY,
+        Name NVARCHAR(255),
+        Adresse NVARCHAR(255),
+        UserID INT UNIQUE,
+        GruppeID INT FOREIGN KEY REFERENCES Gruppen(ID)
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Warenkorb' AND type = 'U')
+BEGIN
+    CREATE TABLE Warenkorb (
+        ID INT PRIMARY KEY IDENTITY,
+        Timestamp DATETIME,
+        UserID INT FOREIGN KEY REFERENCES Kunden(ID)
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Bestellungen' AND type = 'U')
+BEGIN
+    CREATE TABLE Bestellungen (
+        ID INT PRIMARY KEY IDENTITY,
+        ProduktID INT FOREIGN KEY REFERENCES Produkte(ID),
+        K_GruppeID INT FOREIGN KEY REFERENCES Gruppen(ID),
+        WarenkorbID INT FOREIGN KEY REFERENCES Warenkorb(ID),
+        ProduktAnzahl INT
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Product_Recommendations' AND type = 'U')
+BEGIN
+    CREATE TABLE Product_Recommendations (
+        ID INT PRIMARY KEY IDENTITY,
+        UserID INT FOREIGN KEY REFERENCES Kunden(ID),
+        ProduktID INT FOREIGN KEY REFERENCES Produkte(ID),
+        KundenGruppeID INT FOREIGN KEY REFERENCES Gruppen(ID)
+    );
+END
+GO
+
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Group_Product_Rules' AND type = 'U')
+BEGIN
+    CREATE TABLE Group_Product_Rules (
+        ID INT PRIMARY KEY IDENTITY,
+        GruppeID INT FOREIGN KEY REFERENCES Gruppen(ID),
+        ProduktID INT FOREIGN KEY REFERENCES Produkte(ID),
+        Confidence FLOAT
+    );
+END
+GO
+
