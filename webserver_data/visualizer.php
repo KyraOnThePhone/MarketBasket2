@@ -31,7 +31,7 @@
 
 <?php include 'footer.php'; ?>
 
-<!-- JavaScript libs -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const container = document.getElementById('chartContainer');
 
             result.data.forEach((gruppe, index) => {
-                // Neue Materialize Card für jede Gruppe
+
                 const card = document.createElement('div');
                 card.className = 'card';
 

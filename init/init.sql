@@ -79,7 +79,7 @@ END
 GO
 USE Shop;
 GO
--- Tabelle: Produkte
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Produkte' AND type = 'U')
 BEGIN
     CREATE TABLE Produkte (
@@ -91,7 +91,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Gruppen
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Gruppen' AND type = 'U')
 BEGIN
     CREATE TABLE Gruppen (
@@ -100,7 +100,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Kunden
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Kunden' AND type = 'U')
 BEGIN
     CREATE TABLE Kunden (
@@ -112,7 +112,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Warenkorb
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Warenkorb' AND type = 'U')
 BEGIN
     CREATE TABLE Warenkorb (
@@ -122,7 +122,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Bestellungen
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Bestellungen' AND type = 'U')
 BEGIN
     CREATE TABLE Bestellungen (
@@ -134,7 +134,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Product_Recommendations
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Product_Recommendations' AND type = 'U')
 BEGIN
     CREATE TABLE Product_Recommendations (
@@ -145,7 +145,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Group_Product_Rules
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Group_Product_Rules' AND type = 'U')
 BEGIN
     CREATE TABLE Group_Product_Rules (
@@ -156,7 +156,7 @@ BEGIN
     );
 END
 GO
--- Tabelle: Product_Combinations
+
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE name = 'Product_Combinations' AND type = 'U')
 BEGIN
     CREATE TABLE Product_Combinations (
@@ -172,10 +172,7 @@ BEGIN
 END
 GO
 
--- Views erstellen
--- --------------------------
 
--- View: GruppenKaufverhalten
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'GruppenKaufverhalten')
     EXEC('CREATE VIEW GruppenKaufverhalten AS
     SELECT 
@@ -188,7 +185,7 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'GruppenKaufverhalten')
     GROUP BY g.Name, p.Name;');
 GO
 
--- View: KundenWarenkoerbe
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenWarenkoerbe')
     EXEC('CREATE VIEW KundenWarenkoerbe AS
     SELECT 
@@ -204,7 +201,6 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenWarenkoerbe')
     JOIN Produkte p ON b.ProduktID = p.ID;');
 GO
 
--- View: KundenMitGruppennamen
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenMitGruppennamen')
     EXEC('CREATE VIEW KundenMitGruppennamen AS
     SELECT 
@@ -215,7 +211,7 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenMitGruppennamen')
     JOIN Gruppen g ON k.GruppeID = g.ID;');
 GO
 
--- View: KundenEmpfehlungen
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenEmpfehlungen')
     EXEC('CREATE VIEW KundenEmpfehlungen AS
     SELECT 
@@ -228,7 +224,7 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'KundenEmpfehlungen')
     JOIN Produkte p ON pr.ProduktID = p.ID;');
 GO
 
--- View: Transaktionen
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'Transaktionen')
     EXEC('CREATE VIEW Transaktionen AS
     SELECT 
@@ -238,14 +234,14 @@ IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'Transaktionen')
     JOIN Warenkorb w ON b.WarenkorbID = w.ID;');
 GO
 
--- View: AlleGruppen
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'AlleGruppen')
 BEGIN
     EXEC('CREATE VIEW AlleGruppen AS
           SELECT ID, Name FROM Gruppen;');
 END
 GO
--- View: AlleProdukte
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'AlleProdukte')
 BEGIN
     EXEC('CREATE VIEW AlleProdukte AS
@@ -253,7 +249,7 @@ BEGIN
 END
 GO
 
--- View: ProductCombinationAnalysis
+
 IF NOT EXISTS (SELECT * FROM sys.views WHERE name = 'ProductCombinationAnalysis')
 BEGIN
     EXEC('CREATE VIEW ProductCombinationAnalysis AS
@@ -269,9 +265,7 @@ BEGIN
 END
 GO
 
--- --------------------------
--- 3. Produktdaten befüllen
--- --------------------------
+
 IF NOT EXISTS (SELECT * FROM Produkte WHERE Name = 'Nähset')   
 BEGIN
     INSERT INTO Produkte (Name, Beschreibung, Bestand, Hersteller) 
@@ -296,9 +290,7 @@ BEGIN
 END
 GO
 
--- --------------------------
--- 4. Kundengruppen befüllen
--- --------------------------
+
 IF NOT EXISTS (SELECT * FROM Gruppen WHERE Name = 'Oma')   
 BEGIN
     INSERT INTO Gruppen (Name) VALUES
@@ -310,9 +302,7 @@ BEGIN
 END
 GO
 
--- --------------------------
--- 5. Fülle Group_Product_Rules
--- --------------------------
+
 DELETE FROM Group_Product_Rules;
 INSERT INTO Group_Product_Rules (GruppeID, ProduktID, Confidence)
 SELECT 
@@ -343,9 +333,7 @@ JOIN Gruppen g ON g.Name IN ('Oma', 'Gamer', 'Kind', 'Alkoholiker', 'Rich Kid')
 JOIN Produkte p ON p.Name = a.Produkt;
 GO
 
--- --------------------------
--- 6. Fiktive Kunden anlegen
--- --------------------------
+
 DELETE FROM Kunden;
 INSERT INTO Kunden (Name, Adresse, UserID, GruppeID)
 VALUES
@@ -356,16 +344,14 @@ VALUES
 ('Sophia Lux', 'Luxusallee 100', 5, (SELECT ID FROM Gruppen WHERE Name = 'Rich Kid'));
 GO
 
--- --------------------------
--- 7. Generiere Testwarenkörbe und Bestellungen
--- --------------------------
+
 DELETE FROM Bestellungen;
 DELETE FROM Warenkorb;
 DBCC CHECKIDENT ('Bestellungen', RESEED, 0);
 DBCC CHECKIDENT ('Warenkorb', RESEED, 0);
 
 DECLARE @i INT = 1;
-WHILE @i <= 300 -- ca. 300 Warenkörbe generieren
+WHILE @i <= 300 
 BEGIN
     DECLARE @Timestamp DATETIME = DATEADD(MINUTE, -ABS(CAST(CHECKSUM(NEWID()) AS BIGINT) % 10000), GETDATE());
     DECLARE @UserID INT = ABS(CAST(CHECKSUM(NEWID()) AS BIGINT) % 5) + 1;
@@ -393,12 +379,10 @@ BEGIN
 END
 GO
 
--- --------------------------
--- 8. Empfehlungen basierend auf häufigen Kombinationen
--- --------------------------
+
 DELETE FROM Product_Recommendations;
 
--- Wenn ein Kunde "Controller" kauft, empfehle "Holy Energy"
+
 INSERT INTO Product_Recommendations (UserID, ProduktID, KundenGruppeID)
 SELECT DISTINCT 
     k.ID,
@@ -409,7 +393,6 @@ JOIN Warenkorb w ON k.ID = w.UserID
 JOIN Bestellungen b ON w.ID = b.WarenkorbID
 JOIN Produkte p ON b.ProduktID = p.ID AND p.Name = 'Controller';
 
--- Wenn ein Kunde "Pokemon Karten" kauft, empfehle "Tik Tok Mystery Box"
 INSERT INTO Product_Recommendations (UserID, ProduktID, KundenGruppeID)
 SELECT DISTINCT 
     k.ID,
@@ -421,9 +404,7 @@ JOIN Bestellungen b ON w.ID = b.WarenkorbID
 JOIN Produkte p ON b.ProduktID = p.ID AND p.Name = 'Pokemon Karten';
 GO
 
--- --------------------------
--- 9. Befülle Product_Combinations
--- --------------------------
+
 DELETE FROM Product_Combinations;
 DBCC CHECKIDENT ('Product_Combinations', RESEED, 0);
 GO
